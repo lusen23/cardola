@@ -3,12 +3,11 @@ package com.lusen.cardola.framework.adapter;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 
-import com.xiami.basic.rtenviroment.AppRuntime;
-import com.xiami.music.util.ThreadUtil;
-import com.xiami.music.util.logtrack.AppLog;
+import com.lusen.cardola.framework.util.ThreadUtil;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Modifier;
@@ -16,10 +15,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import fm.xiami.main.BuildConfig;
-
 /**
- * Created by leo on 2014/11/9.<br><br>
+ * Created by leo on 2017/7/15.<br><br>
  * 绑定数据源及HolderView的Adapter,实现数据及UI分离
  */
 public class HolderViewAdapter extends BaseAdapter {
@@ -28,7 +25,7 @@ public class HolderViewAdapter extends BaseAdapter {
     private List<? extends IAdapterData> mDatas;
     private Class<? extends HolderViewItem>[] mHolderViews;
     private HolderViewCallback mHolderViewCallback;
-    private ListView listView;
+    private AbsListView mAbsListView;
 
     public HolderViewAdapter(Context context) {
         this.mContext = context;
@@ -104,11 +101,12 @@ public class HolderViewAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        if (null == listView) {
-            if (null != parent && parent instanceof ListView) {
-                listView = (ListView) parent;
+        if (null == mAbsListView) {
+            if (parent instanceof AbsListView) {
+                mAbsListView = (AbsListView) parent;
             }
         }
+        // 构建生成HolderViewItem
         HolderViewItem holderView = null;
         if (null != convertView && convertView.getClass().getName().equals(mHolderViews[getItemViewType(position)].getName())) {
             holderView = (HolderViewItem) convertView;
@@ -140,11 +138,6 @@ public class HolderViewAdapter extends BaseAdapter {
                     holderView = (HolderViewItem) constructor.newInstance(mContext);
                 }
             } catch (Exception e) {
-                if (BuildConfig.DEBUG) {
-                    e.printStackTrace();
-                }
-                AppLog.w(e.getMessage());
-                AppLog.w("HolderViewAdapter error = " + e.getMessage());
             }
         }
 
@@ -152,19 +145,13 @@ public class HolderViewAdapter extends BaseAdapter {
         if (null != mHolderViewCallback) {
             mHolderViewCallback.onHolderViewInvalidate(holderView, position);
         }
-
         // HolderView数据绑定
         if (null != getItem(position) && null != holderView) {
-            //为避免干扰bindData逻辑，所以单独开了个口子去写入position，给埋点用...
-            holderView.setPosition(position);
             holderView.bindData(getItem(position), position);
         }
-
         if (holderView == null) {
-            //FIXME 这里绝不能存在holderView == null的情况，否则listView会报NPE无法正常工作。需要将这个漏洞补上。
-            return new View(AppRuntime.context);
+            return new View(mContext);
         }
-
         return holderView;
     }
 
@@ -200,28 +187,12 @@ public class HolderViewAdapter extends BaseAdapter {
         try {
             return Arrays.asList(mHolderViews).indexOf(viewModelType);
         } catch (Exception e) {
-            AppLog.w(e.getMessage());
         }
         return -1;
     }
 
     public void setHolderViewCallback(HolderViewCallback callback) {
         this.mHolderViewCallback = callback;
-    }
-
-    @Override
-    public void destroyObject(boolean focus) {
-        mDatas.clear();
-    }
-
-    @Override
-    public boolean isDestroyed() {
-        return false;
-    }
-
-    @Override
-    public void setState(DestroyableObjectState state) {
-
     }
 
     public interface HolderViewCallback {
@@ -232,22 +203,21 @@ public class HolderViewAdapter extends BaseAdapter {
     /**
      * 更新指定位置视图
      *
-     * @param position
+     * @param position 数据位置
      */
     public void updateView(int position) {
-        if (listView != null) {
-            int visiblePosition = listView.getFirstVisiblePosition();
-            View view = listView.getChildAt(position - visiblePosition + listView.getHeaderViewsCount());
+        if (null != mAbsListView) {
+            int visiblePosition = mAbsListView.getFirstVisiblePosition();
+            int headerViewCount = (mAbsListView instanceof ListView ? ((ListView) mAbsListView).getHeaderViewsCount() : 0);
+            View view = mAbsListView.getChildAt(position - visiblePosition + headerViewCount);
             HolderViewItem holderView = null;
             if (null != view && view.getClass().getName().equals(mHolderViews[getItemViewType(position)].getName())) {
                 holderView = (HolderViewItem) view;
             }
-
             // HolderView回调接口
             if (null != mHolderViewCallback) {
                 mHolderViewCallback.onHolderViewInvalidate(holderView, position);
             }
-
             // HolderView数据绑定
             if (null != getItem(position) && null != holderView) {
                 holderView.bindData(getItem(position), position);

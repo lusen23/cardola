@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="no_more_data">没有更多内容了</string>
+    <string name="none_network">当前无网络连接</string>
+    <string name="now_none_network">当前无网络，无法加载内容</string>
+    <string name="app_name">车多啦</string>
+
+    <color name="pull_to_refresh_text">#C8C6C6</color>
+    <color name="xiami_orange">#fa7829</color>
+    <color name="transparent">#00000000</color>
+
+    <dimen name="pull_to_refresh_custom_distance">130dp</dimen>
+
+</resources>
