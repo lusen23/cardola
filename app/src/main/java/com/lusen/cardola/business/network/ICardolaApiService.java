@@ -1,5 +1,6 @@
 package com.lusen.cardola.business.network;
 
+import com.lusen.cardola.business.network.model.BaseResponse;
 import com.lusen.cardola.business.network.resp.HomeResp;
 
 import retrofit2.http.GET;
@@ -12,7 +13,11 @@ import rx.Observable;
 
 public interface ICardolaApiService {
 
-    @GET("admin/getOrderInfoList")
-    Observable<HomeResp> getOrderInfoList(@Query("userId") String userId);
+    @GET("admin/appLogin")
+    Observable<BaseResponse<HomeResp>> getOrderInfoList(
+            @Query("username") String username,
+            @Query("password") String password,
+            @Query("captcha") String captcha,
+            @Query("userFrom") int userFrom);
 
 }

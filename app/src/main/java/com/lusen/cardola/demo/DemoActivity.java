@@ -12,6 +12,7 @@ import com.lusen.cardola.R;
 import com.lusen.cardola.business.actionview.ActionViewFactory;
 import com.lusen.cardola.business.base.CardolaBaseActivity;
 import com.lusen.cardola.business.network.CardolaApiManager;
+import com.lusen.cardola.business.network.model.BaseResponse;
 import com.lusen.cardola.business.network.resp.HomeResp;
 import com.lusen.cardola.framework.adapter.HolderViewAdapter;
 import com.lusen.cardola.framework.network.BaseSubscriber;
@@ -72,8 +73,8 @@ public class DemoActivity extends CardolaBaseActivity implements View.OnClickLis
 
         mHolderViewAdapter = new HolderViewAdapter(this, mDatas, DemoHolderView.class);
         mRefreshListView.setAdapter(mHolderViewAdapter);
-        mRefreshListView.setMode(PullToRefreshBase.Mode.BOTH);
 
+        mRefreshListView.setMode(PullToRefreshBase.Mode.BOTH);
         mRefreshListView.setOnPullBeforeRefreshListener(new OnInterceptPullRefreshListener.SampleOnInterceptPullRefreshListener());
         mRefreshListView.setAutoLoad(true, 3);
 
@@ -112,15 +113,16 @@ public class DemoActivity extends CardolaBaseActivity implements View.OnClickLis
     public void onClick(View view) {
         int id = view.getId();
         if (id == mTvDemo.getId()) {
-            CardolaApiManager.getInstance().getOrderInfoList("18", new BaseSubscriber<HomeResp>() {
+            CardolaApiManager.getInstance().getOrderInfoList("", new BaseSubscriber<BaseResponse<HomeResp>>() {
 
                 @Override
                 public void onError(Throwable e) {
+                    super.onError(e);
                     ToastUtil.toast("onError");
                 }
 
                 @Override
-                public void onNext(HomeResp homeResp) {
+                public void onNext(BaseResponse<HomeResp> homeRespBaseResponse) {
                     ToastUtil.toast("onNext");
                 }
             });
@@ -149,7 +151,7 @@ public class DemoActivity extends CardolaBaseActivity implements View.OnClickLis
 
     public void showAccsDialog() {
         AccsDialog dialog = new AccsDialog();
-        dialog.closeWhenBack(false).timeout(60 * 1000);
+        dialog.closeWhenBack(true).timeout(60 * 1000);
         dialog.buildAreaMessage()
                 .height(0.4f)
                 .style(PropertyConstants.AreaMessageStyle.IMAGE_PLAIN_FROM_TOP_TO_BOTTOM)

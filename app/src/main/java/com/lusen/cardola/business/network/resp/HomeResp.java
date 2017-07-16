@@ -8,6 +8,7 @@ import java.io.Serializable;
 
 public class HomeResp implements Serializable {
 
-    public String name;
+    public String uid;
+    public int userFrom;
 
 }

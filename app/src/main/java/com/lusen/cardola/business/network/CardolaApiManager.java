@@ -1,5 +1,6 @@
 package com.lusen.cardola.business.network;
 
+import com.lusen.cardola.business.network.model.BaseResponse;
 import com.lusen.cardola.business.network.resp.HomeResp;
 
 import java.io.IOException;
@@ -89,14 +90,8 @@ public class CardolaApiManager {
                 .subscribe(subscriber);
     }
 
-    /**
-     * 首页信息
-     *
-     * @param use
-     * @param subscriber
-     */
-    public void getOrderInfoList(String userId, Subscriber<HomeResp> subscriber) {
-        execute(getService().getOrderInfoList(userId), subscriber);
+    public void getOrderInfoList(String userId, Subscriber<BaseResponse<HomeResp>> subscriber) {
+        execute(getService().getOrderInfoList("admin", "123456", "", 2), subscriber);
     }
 
 }
