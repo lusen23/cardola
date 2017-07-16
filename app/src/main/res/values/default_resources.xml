@@ -21,10 +21,4 @@
         <item name="android:clipToPadding">false</item>
     </style>
 
-    <dimen name="xiami_action_bar_height">50dp</dimen>
-    <dimen name="xiami_action_bar_padding_top">0dp</dimen>
-
-    <color name="skin_action_line_default_bg">#656577</color>
-
-
 </resources>

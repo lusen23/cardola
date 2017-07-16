@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:orientation="vertical">
+
+        <com.lusen.cardola.framework.uikit.RemoteTextView
+            android:id="@id/common_actionview_title_primary"
+            style="@style/common_actionview_primary_title_style"
+            />
+
+        <com.lusen.cardola.framework.uikit.RemoteTextView
+            android:id="@id/common_actionview_title_secondary"
+            style="@style/common_actionview_secondary_title_style"
+            />
+
+    </LinearLayout>
+</FrameLayout>

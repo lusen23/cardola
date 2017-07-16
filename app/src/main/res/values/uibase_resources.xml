@@ -34,12 +34,17 @@
     <item name="uibase_action_line" type="id"/>
     <item name="uibase_action_below" type="id"/>
     <item name="uibase_action_cover" type="id"/>
-    <dimen name="uibase_actionbar_default_height">37dp</dimen>
     <dimen name="uibase_immersive_custom_padding_top">25dp</dimen>
     <dimen name="uibase_action_line_default_height">1px</dimen>
 
     <item name="uibase_immersive_status_bar" type="id"/>
     <item name="uibase_immersive_nav_bar" type="id"/>
     <item name="uibase_immersive_no_padding" type="id"/>
+
+    <dimen name="uibase_action_bar_height">50dp</dimen>
+    <dimen name="uibase_action_bar_padding_top">0dp</dimen>
+
+    <color name="uibase_action_bar_default_bg">@color/xiami_orange</color>
+    <color name="uibase_action_line_default_bg">#656577</color>
 
 </resources>

@@ -2,10 +2,16 @@ package com.lusen.cardola.framework.uibase.ui.actionbar;
 
 import android.view.View;
 
+import com.lusen.cardola.R;
+import com.lusen.cardola.framework.util.ContextUtil;
+
 /**
  * Created by leo on 16/10/14.
  */
 public class ActionView {
+
+    public static final int sDefaultPaddingNormal = ContextUtil.getContext().getResources().getDimensionPixelSize(R.dimen.common_actionview_default_padding_normal);
+    public static final int sDefaultPaddingEdgeMost = ContextUtil.getContext().getResources().getDimensionPixelSize(R.dimen.common_actionview_default_padding_edge_most);
 
     private View mView;
     private int mId;

@@ -18,28 +18,28 @@
             <FrameLayout
                 android:id="@id/uibase_action_below"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/xiami_action_bar_height"
-                android:paddingTop="@dimen/xiami_action_bar_padding_top"/>
+                android:layout_height="@dimen/uibase_action_bar_height"
+                android:paddingTop="@dimen/uibase_action_bar_padding_top"/>
 
-            <com.xiami.music.uibase.ui.actionbar.ActionBarLayout
+            <com.lusen.cardola.framework.uibase.ui.actionbar.ActionBarLayout
                 android:id="@id/uibase_action_bar"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/xiami_action_bar_height"
-                android:background="@drawable/skin_action_bar_default_bg"
-                android:paddingTop="@dimen/xiami_action_bar_padding_top"/>
+                android:layout_height="@dimen/uibase_action_bar_height"
+                android:background="@color/uibase_action_bar_default_bg"
+                android:paddingTop="@dimen/uibase_action_bar_padding_top"/>
 
             <View
                 android:id="@id/uibase_action_line"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/uibase_action_line_default_height"
                 android:layout_gravity="bottom"
-                android:background="@color/skin_action_line_default_bg"/>
+                android:background="@color/uibase_action_line_default_bg"/>
 
             <FrameLayout
                 android:id="@id/uibase_action_cover"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/xiami_action_bar_height"
-                android:paddingTop="@dimen/xiami_action_bar_padding_top"
+                android:layout_height="@dimen/uibase_action_bar_height"
+                android:paddingTop="@dimen/uibase_action_bar_padding_top"
                 android:visibility="gone"/>
 
         </FrameLayout>

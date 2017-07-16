@@ -1,23 +1,25 @@
 package com.lusen.cardola.demo;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentActivity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.lusen.cardola.R;
+import com.lusen.cardola.business.actionview.ActionViewFactory;
+import com.lusen.cardola.business.base.CardolaBaseActivity;
 import com.lusen.cardola.business.network.CardolaApiManager;
 import com.lusen.cardola.business.network.resp.HomeResp;
 import com.lusen.cardola.framework.adapter.HolderViewAdapter;
 import com.lusen.cardola.framework.network.BaseSubscriber;
+import com.lusen.cardola.framework.uibase.ui.actionbar.ActionView;
 import com.lusen.cardola.framework.uikit.RefreshListView;
 import com.lusen.cardola.framework.uikit.RemoteImageView;
 import com.lusen.cardola.framework.uikit.pulltorefresh.OnInterceptPullRefreshListener;
 import com.lusen.cardola.framework.uikit.pulltorefresh.PullToRefreshBase;
-import com.lusen.cardola.framework.util.ThreadUtil;
 import com.lusen.cardola.framework.util.ToastUtil;
 import com.lusen.cardola.framework.util.UiUtil;
 
@@ -28,7 +30,7 @@ import java.util.List;
  * Created by leo on 2017/7/13.
  */
 
-public class DemoActivity extends FragmentActivity implements View.OnClickListener {
+public class DemoActivity extends CardolaBaseActivity implements View.OnClickListener {
 
     private TextView mTvDemo;
     private RemoteImageView mImgDemo;
@@ -38,10 +40,13 @@ public class DemoActivity extends FragmentActivity implements View.OnClickListen
     private HolderViewAdapter mHolderViewAdapter;
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_demo);
+    protected View onContentViewInit(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return inflaterView(inflater, R.layout.activity_demo, container);
+    }
 
+    @Override
+    protected void onContentViewCreated(View view) {
+        super.onContentViewCreated(view);
         mTvDemo = UiUtil.findViewById(this, R.id.tv_demo, TextView.class);
         mImgDemo = UiUtil.findViewById(this, R.id.img_demo, RemoteImageView.class);
         mRefreshListView = UiUtil.findViewById(this, R.id.list, RefreshListView.class);
@@ -96,7 +101,6 @@ public class DemoActivity extends FragmentActivity implements View.OnClickListen
         });
 
         mHolderViewAdapter.notifyDataSetChanged();
-
     }
 
     @Override
@@ -118,4 +122,23 @@ public class DemoActivity extends FragmentActivity implements View.OnClickListen
         } else if (id == mImgDemo.getId()) {
         }
     }
+
+    @Override
+    public String initActionBarTitle() {
+        return "卡多拉";
+    }
+
+    @Override
+    public void onActionViewClick(ActionView actionView) {
+        super.onActionViewClick(actionView);
+        int id = actionView.getId();
+        if (id == ActionViewFactory.BACK) {
+            ToastUtil.toast("BACK");
+        } else if (id == ActionViewFactory.TITLE) {
+            ToastUtil.toast("TITLE");
+        } else if (id == ActionViewFactory.SEARCH) {
+            ToastUtil.toast("SEARCH");
+        }
+    }
+
 }
