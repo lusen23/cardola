@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="SlidingCloseableRelativeLayout">
+        <attr name="open_state" format="boolean"/>
+        <attr name="close_mode">
+            <enum name="none" value="0"/>
+            <enum name="horizontal_left" value="1"/>
+            <enum name="horizontal_right" value="2"/>
+            <enum name="vertical_top" value="4"/>
+            <enum name="vertical_bottom" value="8"/>
+            <enum name="horizontal" value="3"/>
+            <enum name="vertical" value="12"/>
+            <enum name="both_side" value="15"/>
+        </attr>
+    </declare-styleable>
+
+    <style name="Theme" parent="@android:style/Theme">
+    </style>
+
+    <!--侧滑关闭Activity务必设置该Theme-->
+    <style name="Theme.SlidingCloseableActivity">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+    <color name="color_bg">#875633</color>
+
+    <item name="uibase_actionbar_container_cover" type="id"/>
+    <item name="uibase_actionbar_container_divide" type="id"/>
+    <item name="uibase_action_container" type="id"/>
+    <item name="uibase_action_bar" type="id"/>
+    <item name="uibase_action_line" type="id"/>
+    <item name="uibase_action_below" type="id"/>
+    <item name="uibase_action_cover" type="id"/>
+    <dimen name="uibase_actionbar_default_height">37dp</dimen>
+    <dimen name="uibase_immersive_custom_padding_top">25dp</dimen>
+    <dimen name="uibase_action_line_default_height">1px</dimen>
+
+    <item name="uibase_immersive_status_bar" type="id"/>
+    <item name="uibase_immersive_nav_bar" type="id"/>
+    <item name="uibase_immersive_no_padding" type="id"/>
+
+</resources>

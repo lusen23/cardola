@@ -12,7 +12,7 @@ import rx.Observable;
 
 public interface ICardolaApiService {
 
-    @GET("X/X")
-    Observable<HomeResp> getHome(@Query("id") int id);
+    @GET("admin/getOrderInfoList")
+    Observable<HomeResp> getOrderInfoList(@Query("userId") String userId);
 
 }

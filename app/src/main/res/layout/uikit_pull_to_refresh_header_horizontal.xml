@@ -24,7 +24,7 @@
             android:indeterminate="true"
             android:visibility="gone" />
 
-        <com.xiami.music.uikit.pulltorefresh.internal.RefreshWheel
+        <com.lusen.cardola.framework.uikit.pulltorefresh.internal.RefreshWheel
             android:id="@+id/refresh_circle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

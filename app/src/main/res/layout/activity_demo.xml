@@ -5,8 +5,20 @@
               android:orientation="vertical">
 
     <TextView
+        android:id="@+id/tv_demo"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:text="Demo"/>
+        android:text="请求接口"/>
+
+    <com.lusen.cardola.framework.uikit.RemoteImageView
+        android:id="@+id/img_demo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"/>
+
+    <com.lusen.cardola.framework.uikit.RefreshListView
+        android:id="@+id/list"
+        style="@style/list_view_base_style"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </LinearLayout>

@@ -10,17 +10,17 @@ import com.bumptech.glide.Glide;
  * Created by leo on 2017/7/15.
  */
 
-public class DisplayView extends android.support.v7.widget.AppCompatImageView {
+public class RemoteImageView extends android.support.v7.widget.AppCompatImageView {
 
-    public DisplayView(Context context) {
+    public RemoteImageView(Context context) {
         super(context);
     }
 
-    public DisplayView(Context context, @Nullable AttributeSet attrs) {
+    public RemoteImageView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public DisplayView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public RemoteImageView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 

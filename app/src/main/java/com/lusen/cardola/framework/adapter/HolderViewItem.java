@@ -16,8 +16,6 @@ import android.widget.FrameLayout;
  */
 public abstract class HolderViewItem extends FrameLayout {
 
-    private volatile boolean mHasBindView = false;
-
     public HolderViewItem(@NonNull Context context) {
         super(context);
         init();
@@ -35,15 +33,7 @@ public abstract class HolderViewItem extends FrameLayout {
 
     private void init() {
         inflate(getContext(), getLayoutRes(), this);
-    }
-
-    @Override
-    protected void onAttachedToWindow() {
-        super.onAttachedToWindow();
-        if (!mHasBindView) {
-            mHasBindView = true;
-            bindView(this);
-        }
+        bindView(this);
     }
 
     /**

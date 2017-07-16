@@ -26,7 +26,7 @@ public class CardolaApiManager {
     private static CardolaApiManager sInstance;
     private static final byte[] mLock = new byte[0];
 
-    private static String BASE_URL = "https://api.heweather.com";
+    private static String BASE_URL = "http://huhansan.iego.cn:11778";
 
     private Retrofit mRetrofit;
 
@@ -82,14 +82,21 @@ public class CardolaApiManager {
         }
     }
 
+    private <T> void execute(Observable<T> observable, Subscriber<T> subscriber) {
+        observable.subscribeOn(Schedulers.newThread())
+                .unsubscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber);
+    }
+
     /**
      * 首页信息
      *
-     * @param id
+     * @param use
      * @param subscriber
      */
-    public void getHome(int id, Subscriber subscriber) {
-        getService().getHome(id).compose(new ComposeThread<HomeResp>()).subscribe(subscriber);
+    public void getOrderInfoList(String userId, Subscriber<HomeResp> subscriber) {
+        execute(getService().getOrderInfoList(userId), subscriber);
     }
 
 }
