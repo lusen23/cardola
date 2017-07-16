@@ -18,6 +18,11 @@ import com.lusen.cardola.framework.network.BaseSubscriber;
 import com.lusen.cardola.framework.uibase.ui.actionbar.ActionView;
 import com.lusen.cardola.framework.uikit.RefreshListView;
 import com.lusen.cardola.framework.uikit.RemoteImageView;
+import com.lusen.cardola.framework.uikit.choicedialogxm.cmd.core.AccsDialog;
+import com.lusen.cardola.framework.uikit.choicedialogxm.cmd.core.PropertyConstants;
+import com.lusen.cardola.framework.uikit.choicedialogxm.cmd.core.WidgetButton;
+import com.lusen.cardola.framework.uikit.choicedialogxm.cmd.core.WidgetImage;
+import com.lusen.cardola.framework.uikit.choicedialogxm.cmd.core.WidgetPlain;
 import com.lusen.cardola.framework.uikit.pulltorefresh.OnInterceptPullRefreshListener;
 import com.lusen.cardola.framework.uikit.pulltorefresh.PullToRefreshBase;
 import com.lusen.cardola.framework.util.ToastUtil;
@@ -136,9 +141,24 @@ public class DemoActivity extends CardolaBaseActivity implements View.OnClickLis
             ToastUtil.toast("BACK");
         } else if (id == ActionViewFactory.TITLE) {
             ToastUtil.toast("TITLE");
+            showAccsDialog();
         } else if (id == ActionViewFactory.SEARCH) {
             ToastUtil.toast("SEARCH");
         }
+    }
+
+    public void showAccsDialog() {
+        AccsDialog dialog = new AccsDialog();
+        dialog.closeWhenBack(false).timeout(60 * 1000);
+        dialog.buildAreaMessage()
+                .height(0.4f)
+                .style(PropertyConstants.AreaMessageStyle.IMAGE_PLAIN_FROM_TOP_TO_BOTTOM)
+                .plain(new WidgetPlain().height(0.6f).text("欢迎来到虾米音乐").schemeUrl("111111").closeWhenClick(false))
+                .image(new WidgetImage().height(0.4f).url("http://pic61.nipic.com/file/20150309/615823_101434713000_2.jpg").schemeUrl("222222").closeWhenClick(false));
+        dialog.buildAreaButton()
+                .button(new WidgetButton().itemId("button_id_0").text("查看VIP信息").schemeUrl("xiami://album/101").closeWhenClick(true).bgColor("#EF4136").txColor("#FFFFFF"),
+                        new WidgetButton().itemId("button_id_1").text("取消").schemeUrl("xiami://album/101").closeWhenClick(true).bgColor("#777777").txColor("#543545"));
+        dialog.show();
     }
 
 }

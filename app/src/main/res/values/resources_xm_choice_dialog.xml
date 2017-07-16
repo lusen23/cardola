@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="xm_choice_dialog_sure">确定</string>
+    <string name="xm_choice_dialog_cancel">取消</string>
+
+    <!--ChoiceDialog控件Id-->
+    <item name="xm_choice_dialog_root_layout" type="id"/>
+    <item name="xm_choice_dialog_close_layout" type="id"/>
+    <item name="xm_choice_dialog_title_layout" type="id"/>
+    <item name="xm_choice_dialog_title_divide" type="id"/>
+    <item name="xm_choice_dialog_title" type="id"/>
+    <item name="xm_choice_dialog_message_layout" type="id"/>
+    <item name="xm_choice_dialog_message_divide" type="id"/>
+    <item name="xm_choice_dialog_message_tv" type="id"/>
+    <item name="xm_choice_dialog_message_image" type="id"/>
+    <item name="xm_choice_dialog_message_etv" type="id"/>
+    <item name="xm_choice_dialog_message_cb" type="id"/>
+    <item name="xm_choice_dialog_list" type="id"/>
+    <item name="xm_choice_dialog_button_divide" type="id"/>
+    <item name="xm_choice_dialog_button_positive" type="id"/>
+    <item name="xm_choice_dialog_button_negative" type="id"/>
+    <item name="xm_choice_dialog_button_neutral" type="id"/>
+    <item name="xm_choice_dialog_style_single" type="id"/>
+    <item name="xm_choice_dialog_style_couple" type="id"/>
+    <item name="xm_choice_dialog_style_multi" type="id"/>
+    <item name="xm_choice_dialog_item_title" type="id"/>
+    <item name="xm_choice_dialog_item_divide" type="id"/>
+
+    <drawable name="xm_choice_dialog_item_divide_bg_color">@drawable/xm_choice_list_line</drawable>
+    <drawable name="xm_choice_dialog_item_title_bg_color">@drawable/xm_choice_simple_list_selector</drawable>
+    <color name="xm_choice_dialog_item_title_text_color">#333F48</color>
+
+    <style name="choiceDialogXM" parent="@android:style/Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="choiceDialogItemTextXM">
+        <item name="android:textColor">@color/xm_choice_dialog_item_title_text_color</item>
+        <item name="android:textSize">17dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+    </style>
+
+</resources>

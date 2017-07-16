@@ -27,6 +27,10 @@ public class DisplayUtil {
         }
     }
 
+    public static int getDisplayHeight() {
+        return metrics.heightPixels;
+    }
+
     public static DisplayMetrics getMetrics() {
         return metrics;
     }

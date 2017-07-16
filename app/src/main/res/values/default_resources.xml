@@ -8,6 +8,8 @@
 
     <color name="pull_to_refresh_text">#C8C6C6</color>
     <color name="xiami_orange">#fa7829</color>
+    <color name="xiami_black">#333F48</color>
+    <color name="xiami_red">#f02a30</color>
     <color name="transparent">#00000000</color>
 
     <dimen name="pull_to_refresh_custom_distance">130dp</dimen>

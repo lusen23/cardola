@@ -46,12 +46,12 @@ public class SlidingCloseableRelativeLayout extends RelativeLayout {
     protected static final int SCROLL_STATE_DRAGGING = SCROLL_STATE_IDLE + 1;
 
     /**
-     * Indicates that the layout is in the process of settling to a final position.
+     * Indicates that the layout is in the execute of settling to a final position.
      */
     protected static final int SCROLL_STATE_SETTLING = SCROLL_STATE_DRAGGING + 1;
 
     /**
-     * Indicates that the layout is int the process of closing itself
+     * Indicates that the layout is int the execute of closing itself
      */
     protected static final int SCROLL_STATE_CLOSE = SCROLL_STATE_SETTLING + 1;
 
