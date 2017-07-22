@@ -12,4 +12,8 @@ public class BaseResponse<T> implements Serializable {
     public String msg;
     public T data;
 
+    public boolean isSuccess() {
+        return success == 0;
+    }
+
 }

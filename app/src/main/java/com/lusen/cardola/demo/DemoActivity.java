@@ -126,6 +126,19 @@ public class DemoActivity extends CardolaBaseActivity implements View.OnClickLis
                     ToastUtil.toast("onNext");
                 }
             });
+
+            CardolaApiManager.getInstance().getOrderInfoList("", new BaseSubscriber<BaseResponse<HomeResp>>() {
+                @Override
+                public void onCompleted() {
+                    super.onCompleted();
+                }
+
+                @Override
+                public void onNext(BaseResponse<HomeResp> response) {
+                    super.onNext(response);
+                }
+            });
+
         } else if (id == mImgDemo.getId()) {
         }
     }

@@ -18,4 +18,9 @@ public abstract class BaseSubscriber<T> extends Subscriber<T> {
 
     }
 
+    @Override
+    public void onNext(T response) {
+
+    }
+
 }
