@@ -1,4 +1,4 @@
-package com.lusen.cardola.business.network.model;
+package com.lusen.cardola.business.network.resp;
 
 import java.io.Serializable;
 

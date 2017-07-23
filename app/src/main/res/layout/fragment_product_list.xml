@@ -4,11 +4,10 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
-    <TextView
+    <com.lusen.cardola.framework.uikit.RefreshListView
+        android:id="@+id/listview"
+        style="@style/list_view_base_style"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="商品展示"
-        android:textSize="30dp"/>
+        android:layout_height="match_parent"/>
 
 </LinearLayout>

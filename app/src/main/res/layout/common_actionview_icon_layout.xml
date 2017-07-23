@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent">
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="wrap_content"
+             android:layout_height="match_parent">
 
     <com.lusen.cardola.framework.uikit.RemoteImageView
         android:id="@id/common_actionview_icon"
         style="@style/common_actionview_icon_style"
-        android:layout_centerInParent="true"/>
+        android:layout_gravity="center"/>
 
-</RelativeLayout>
+</FrameLayout>

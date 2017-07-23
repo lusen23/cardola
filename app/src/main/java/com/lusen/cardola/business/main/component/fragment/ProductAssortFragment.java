@@ -7,22 +7,19 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.lusen.cardola.R;
-import com.lusen.cardola.business.actionview.ActionViewFactory;
 import com.lusen.cardola.business.base.CardolaBaseFragment;
-import com.lusen.cardola.business.main.home.data.CustomerData;
-import com.lusen.cardola.business.main.home.holderitem.HolderItemCustomer;
+import com.lusen.cardola.business.main.home.data.ProductAssortBaseData;
+import com.lusen.cardola.business.main.home.holderitem.HolderItemProductAssortDouble;
+import com.lusen.cardola.business.main.home.holderitem.HolderItemProductAssortTriple;
 import com.lusen.cardola.business.network.CardolaApiManager;
 import com.lusen.cardola.business.network.resp.BaseResponse;
-import com.lusen.cardola.business.network.resp.GetCustomerListResp;
+import com.lusen.cardola.business.network.resp.GetProductAssortResp;
 import com.lusen.cardola.framework.adapter.HolderViewAdapter;
 import com.lusen.cardola.framework.network.BaseSubscriber;
 import com.lusen.cardola.framework.uibase.UiModelActionBarHelper;
-import com.lusen.cardola.framework.uibase.ui.actionbar.ActionBarLayout;
-import com.lusen.cardola.framework.uibase.ui.actionbar.ActionView;
 import com.lusen.cardola.framework.uikit.RefreshListView;
 import com.lusen.cardola.framework.uikit.pulltorefresh.PullToRefreshBase;
 import com.lusen.cardola.framework.util.ContextUtil;
-import com.lusen.cardola.framework.util.ToastUtil;
 import com.lusen.cardola.framework.util.UiUtil;
 
 import java.util.ArrayList;
@@ -32,24 +29,24 @@ import java.util.List;
  * Created by leo on 2017/7/23.
  */
 
-public class CustomerListFragment extends CardolaBaseFragment {
+public class ProductAssortFragment extends CardolaBaseFragment {
 
     private RefreshListView mRefreshListView;
     private HolderViewAdapter mHolderViewAdapter;
-    private List<CustomerData> mDatas = new ArrayList<>();
+    private List<ProductAssortBaseData> mDatas = new ArrayList<>();
 
     @Override
     protected View onContentViewInit(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflaterView(inflater, R.layout.fragment_customer_list, container);
+        return inflaterView(inflater, R.layout.fragment_product_assort, container);
     }
 
     @Override
     protected void onContentViewCreated(View view) {
         super.onContentViewCreated(view);
         mRefreshListView = UiUtil.findViewById(getView(), R.id.listview, RefreshListView.class);
-        mHolderViewAdapter = new HolderViewAdapter(getHostActivityIfExist(), mDatas, HolderItemCustomer.class);
+        mHolderViewAdapter = new HolderViewAdapter(getHostActivityIfExist(), mDatas, HolderItemProductAssortDouble.class, HolderItemProductAssortTriple.class);
         mRefreshListView.setAdapter(mHolderViewAdapter);
-        mRefreshListView.setMode(PullToRefreshBase.Mode.BOTH);
+        mRefreshListView.setMode(PullToRefreshBase.Mode.PULL_FROM_START);
         mRefreshListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
             @Override
             public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
@@ -66,47 +63,38 @@ public class CustomerListFragment extends CardolaBaseFragment {
 
     @Override
     public String initActionBarTitle() {
-        return ContextUtil.getContext().getResources().getString(R.string.actionbar_title_customer_list);
+        return ContextUtil.getContext().getResources().getString(R.string.actionbar_title_product_assort);
     }
 
     @Override
     public void onActionViewCreated(UiModelActionBarHelper helper) {
         super.onActionViewCreated(helper);
-        ActionView actionViewSearch = ActionViewFactory.buildActionView(getLayoutInflater(), ActionViewFactory.SEARCH);
-        helper.addActionViewToContainer(actionViewSearch, ActionBarLayout.ActionContainer.RIGHT, true);
-//        mActionViewBack.hide(false);
-    }
-
-    @Override
-    public void onActionViewClick(ActionView actionView) {
-        super.onActionViewClick(actionView);
-        int id = actionView.getId();
-        if (id == ActionViewFactory.SEARCH) {
-            search();
-        }
-    }
-
-    private void search() {
-        ToastUtil.toast("搜索");
+        mActionViewBack.hide(false);
     }
 
     private void loadData() {
         mRefreshListView.setRefreshing();
-        CardolaApiManager.getInstance().getCustomerList(null, new BaseSubscriber<BaseResponse<GetCustomerListResp>>() {
+        CardolaApiManager.getInstance().getProductAssort(new BaseSubscriber<BaseResponse<GetProductAssortResp>>() {
 
             @Override
             public void onError(Throwable e) {
                 super.onError(e);
                 mRefreshListView.onRefreshComplete();
+
+                mDatas.clear();
+                List<ProductAssortBaseData> datas = ProductAssortBaseData.convert(null);
+                mDatas.addAll(datas);
+                mHolderViewAdapter.notifyDataSetChanged();
+
             }
 
             @Override
-            public void onNext(BaseResponse<GetCustomerListResp> response) {
+            public void onNext(BaseResponse<GetProductAssortResp> response) {
                 super.onNext(response);
                 mRefreshListView.onRefreshComplete();
                 mDatas.clear();
                 if (null != response && response.isSuccess()) {
-                    List<CustomerData> datas = CustomerData.convert(response.data);
+                    List<ProductAssortBaseData> datas = ProductAssortBaseData.convert(response.data);
                     mDatas.addAll(datas);
                 }
                 mHolderViewAdapter.notifyDataSetChanged();

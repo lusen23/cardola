@@ -21,6 +21,18 @@
         <item name="iconHeight">28dp</item>
     </style>
 
+    <style name="DividerStyle">
+        <item name="android:layout_height">1dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:background">@color/C_grey</item>
+    </style>
+
+    <style name="ArrowStyle">
+        <item name="android:layout_height">12dp</item>
+        <item name="android:layout_width">12dp</item>
+        <item name="android:background">@drawable/icon_arrow_right</item>
+    </style>
+
     <color name="C_black">#000000</color>
     <color name="C_grey">#98A4AE</color>
     <color name="C_orange">#fa7829</color>
@@ -33,6 +45,12 @@
     <dimen name="F_16">16dp</dimen>
     <dimen name="F_18">18dp</dimen>
     <dimen name="F_20">20dp</dimen>
+    <dimen name="F_22">22dp</dimen>
+    <dimen name="F_24">24dp</dimen>
+    <dimen name="F_26">26dp</dimen>
+    <dimen name="F_28">28dp</dimen>
+
+    <dimen name="global_item_padding">20dp</dimen>
 
     <string name="splash_app_desc">车多啦业务平台</string>
     <string name="splash_version_desc">V1.0</string>
@@ -48,5 +66,11 @@
     <string name="home_tab_title_1">考核信息</string>
     <string name="home_tab_title_2">商品展示</string>
     <string name="home_tab_title_3">我的信息</string>
+
+    <string name="actionbar_title_find_password">找回密码</string>
+    <string name="actionbar_title_customer_list">我的商户</string>
+    <string name="actionbar_title_checkinfo_list">考核信息</string>
+    <string name="actionbar_title_product_assort">商品展示</string>
+    <string name="actionbar_title_mine">我的信息</string>
 
 </resources>

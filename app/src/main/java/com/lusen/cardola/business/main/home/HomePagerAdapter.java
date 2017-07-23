@@ -11,8 +11,8 @@ import com.githang.viewpagerindicator.IconPagerAdapter;
 import com.lusen.cardola.R;
 import com.lusen.cardola.business.main.component.fragment.CheckInfoListFragment;
 import com.lusen.cardola.business.main.component.fragment.CustomerListFragment;
-import com.lusen.cardola.business.main.component.fragment.MineListFragment;
-import com.lusen.cardola.business.main.component.fragment.ProductListFragment;
+import com.lusen.cardola.business.main.component.fragment.MineFragment;
+import com.lusen.cardola.business.main.component.fragment.ProductAssortFragment;
 import com.lusen.cardola.framework.util.ContextUtil;
 
 /**
@@ -61,11 +61,11 @@ public class HomePagerAdapter extends FragmentPagerAdapter implements IconPagerA
             }
             // 专辑
             else if (position == FRAGMENT_TAB_2) {
-                fragment = new ProductListFragment();
+                fragment = new ProductAssortFragment();
             }
             // 歌单
             else if (position == FRAGMENT_TAB_3) {
-                fragment = new MineListFragment();
+                fragment = new MineFragment();
             }
             mMapFragments.put(position, fragment);
         }
@@ -103,6 +103,7 @@ public class HomePagerAdapter extends FragmentPagerAdapter implements IconPagerA
         try {
             super.finishUpdate(container);
         } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

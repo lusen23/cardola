@@ -9,6 +9,10 @@
     <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.READ_SETTINGS"/>
 
+    <uses-sdk
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:overrideLibrary="com.facebook.shimmer"/>
+
     <application
         android:name="com.lusen.cardola.business.CardolaApplication"
         android:allowBackup="true"
@@ -40,6 +44,34 @@
                 <category android:name="android.intent.category.DEFAULT"/>
                 <data
                     android:host="home"
+                    android:scheme="cardola"/>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.lusen.cardola.business.main.component.LoginActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="com.xiami.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data
+                    android:host="login"
+                    android:scheme="cardola"/>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.lusen.cardola.business.main.component.FindPasswordActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="com.xiami.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data
+                    android:host="find_password"
                     android:scheme="cardola"/>
             </intent-filter>
         </activity>

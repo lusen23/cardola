@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal"
+              android:paddingLeft="@dimen/global_item_padding"
+              android:paddingRight="@dimen/global_item_padding">
+
+    <RelativeLayout
+        android:id="@+id/layout_item_0"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:layout_weight="1">
+
+        <com.lusen.cardola.framework.uikit.RemoteImageView
+            android:id="@+id/cover_0"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"/>
+
+        <com.lusen.cardola.framework.uikit.RemoteTextView
+            android:id="@+id/name_0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/cover_0"
+            android:layout_alignRight="@id/cover_0"
+            android:layout_marginBottom="6dp"
+            android:layout_marginRight="6dp"
+            android:textColor="@color/C_white"
+            android:textSize="@dimen/F_16"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_item_1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+        <com.lusen.cardola.framework.uikit.RemoteImageView
+            android:id="@+id/cover_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"/>
+
+        <com.lusen.cardola.framework.uikit.RemoteTextView
+            android:id="@+id/name_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/cover_1"
+            android:layout_alignRight="@id/cover_1"
+            android:layout_marginBottom="6dp"
+            android:layout_marginRight="6dp"
+            android:textColor="@color/C_white"
+            android:textSize="@dimen/F_16"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

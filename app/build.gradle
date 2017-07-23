@@ -39,5 +39,6 @@ dependencies {
     // fastjson
     compile 'com.alibaba:fastjson:1.1.57.android'
     compile 'com.githang:iconpagerindicator:1.2'
+    compile 'com.facebook.shimmer:shimmer:0.1.0@aar'
 
 }

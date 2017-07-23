@@ -12,7 +12,7 @@ import com.lusen.cardola.R;
 import com.lusen.cardola.business.actionview.ActionViewFactory;
 import com.lusen.cardola.business.base.CardolaBaseActivity;
 import com.lusen.cardola.business.network.CardolaApiManager;
-import com.lusen.cardola.business.network.model.BaseResponse;
+import com.lusen.cardola.business.network.resp.BaseResponse;
 import com.lusen.cardola.business.network.resp.HomeResp;
 import com.lusen.cardola.framework.adapter.HolderViewAdapter;
 import com.lusen.cardola.framework.network.BaseSubscriber;

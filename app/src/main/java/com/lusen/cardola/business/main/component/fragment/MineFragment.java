@@ -18,37 +18,21 @@ import com.lusen.cardola.framework.util.ToastUtil;
  * Created by leo on 2017/7/23.
  */
 
-public class CheckInfoListFragment extends CardolaBaseFragment {
-
+public class MineFragment extends CardolaBaseFragment {
     @Override
     protected View onContentViewInit(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflaterView(inflater, R.layout.fragment_checkinfo_list, container);
+        return inflaterView(inflater, R.layout.fragment_mine, container);
     }
 
     @Override
     public String initActionBarTitle() {
-        return ContextUtil.getContext().getResources().getString(R.string.actionbar_title_checkinfo_list);
+        return ContextUtil.getContext().getResources().getString(R.string.actionbar_title_mine);
     }
 
     @Override
     public void onActionViewCreated(UiModelActionBarHelper helper) {
         super.onActionViewCreated(helper);
-        ActionView actionViewSearch = ActionViewFactory.buildActionView(getLayoutInflater(), ActionViewFactory.SEARCH);
-        helper.addActionViewToContainer(actionViewSearch, ActionBarLayout.ActionContainer.RIGHT, true);
         mActionViewBack.hide(false);
-    }
-
-    @Override
-    public void onActionViewClick(ActionView actionView) {
-        super.onActionViewClick(actionView);
-        int id = actionView.getId();
-        if (id == ActionViewFactory.SEARCH) {
-            search();
-        }
-    }
-
-    private void search() {
-        ToastUtil.toast("搜索");
     }
 
 }

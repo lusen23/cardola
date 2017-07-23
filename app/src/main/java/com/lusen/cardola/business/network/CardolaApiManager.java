@@ -1,7 +1,10 @@
 package com.lusen.cardola.business.network;
 
-import com.lusen.cardola.business.network.model.BaseResponse;
+import com.lusen.cardola.business.network.resp.BaseResponse;
+import com.lusen.cardola.business.network.resp.GetCustomerListResp;
+import com.lusen.cardola.business.network.resp.GetProductAssortResp;
 import com.lusen.cardola.business.network.resp.HomeResp;
+import com.lusen.cardola.business.network.resp.LoginResp;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -73,16 +76,6 @@ public class CardolaApiManager {
         return mRetrofit.create(ICardolaApiService.class);
     }
 
-    private class ComposeThread<T> implements Observable.Transformer<T, T> {
-        @Override
-        public Observable<T> call(Observable<T> observable) {
-            return observable
-                    .subscribeOn(Schedulers.io())
-                    .unsubscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread());
-        }
-    }
-
     private <T> void execute(Observable<T> observable, Subscriber<T> subscriber) {
         observable.subscribeOn(Schedulers.newThread())
                 .unsubscribeOn(Schedulers.newThread())
@@ -92,6 +85,18 @@ public class CardolaApiManager {
 
     public void getOrderInfoList(String userId, Subscriber<BaseResponse<HomeResp>> subscriber) {
         execute(getService().getOrderInfoList("admin", "123456", "", 2), subscriber);
+    }
+
+    public void login(String account, String password, Subscriber<BaseResponse<LoginResp>> subscriber) {
+        execute(getService().login(account, password), subscriber);
+    }
+
+    public void getCustomerList(String token, Subscriber<BaseResponse<GetCustomerListResp>> subscriber) {
+        execute(getService().getCustomerList(token), subscriber);
+    }
+
+    public void getProductAssort(Subscriber<BaseResponse<GetProductAssortResp>> subscriber) {
+        execute(getService().getProductAssort(), subscriber);
     }
 
 }
