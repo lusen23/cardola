@@ -20,13 +20,27 @@
             android:value="GlideModule"/>
 
         <activity
-            android:name="com.lusen.cardola.demo.DemoActivity"
+            android:name="com.lusen.cardola.business.main.component.SplashActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Light">
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.lusen.cardola.business.main.component.HomeActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="com.xiami.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data
+                    android:host="home"
+                    android:scheme="cardola"/>
             </intent-filter>
         </activity>
 

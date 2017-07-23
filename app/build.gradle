@@ -38,5 +38,6 @@ dependencies {
     compile 'jp.wasabeef:glide-transformations:2.0.1'
     // fastjson
     compile 'com.alibaba:fastjson:1.1.57.android'
+    compile 'com.githang:iconpagerindicator:1.2'
 
 }

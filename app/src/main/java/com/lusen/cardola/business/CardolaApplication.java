@@ -7,4 +7,10 @@ import com.lusen.cardola.framework.uibase.base.BaseApplication;
  */
 
 public class CardolaApplication extends BaseApplication {
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+    }
+
 }

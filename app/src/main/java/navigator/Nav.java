@@ -69,7 +69,7 @@ public class Nav {
         }
 
         Nav nav = new Nav();
-        nav.mNavUri = new Uri.Builder().scheme(Nav.SCHEME_XIAMI).authority(host);
+        nav.mNavUri = new Uri.Builder().scheme(Nav.SCHEME_DEFAULT).authority(host);
         return nav;
     }
 
@@ -703,14 +703,14 @@ public class Nav {
     private static HashSet<NavPreprocessor> sPreprocessorHashSet = new HashSet<>();
     private static HashSet<String> sSupportedSchemes = new HashSet<>();
 
-    public static final String SCHEME_XIAMI = "xiami";
+    public static final String SCHEME_DEFAULT = "cardola";
     public static final String SCHEME_HTTP = "http";
     public static final String SCHEME_HTTPS = "https";
 
     public static final String FILTER_ACTION = "com.ali.music.action.navigator.INTERNAL_NAVIGATION";
 
     static {
-        Nav.sSupportedSchemes.add(SCHEME_XIAMI);
+        Nav.sSupportedSchemes.add(SCHEME_DEFAULT);
         Nav.sSupportedSchemes.add(SCHEME_HTTP);
         Nav.sSupportedSchemes.add(SCHEME_HTTPS);
     }

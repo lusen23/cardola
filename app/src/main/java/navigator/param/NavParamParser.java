@@ -3,13 +3,12 @@ package navigator.param;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 
-import com.xiami.music.constant.service.scheme.SchemeUrlConstants.Param;
-import com.xiami.music.navigator.Nav;
-
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
+import navigator.Nav;
 
 /**
  * NavObject  -->  NavParamParser
@@ -64,19 +63,6 @@ public class NavParamParser {
                     // 将url内参数部分进行decode后,返回给上层
                     paramFromUrl.put(Uri.decode(paramKey), Uri.decode(paramValue));
                 }
-            }
-        }
-
-        // xiami://album/123  中的123
-        Object oldArgumentInPath = PathParamParser.getOldSchemeArg(mUri);
-        if (oldArgumentInPath != null) {
-            //优先放到id
-            if (!paramFromUrl.keySet().contains(Param.ID)) {
-                paramFromUrl.put(Param.ID, oldArgumentInPath);
-            }
-            //然后放到old_scheme_arg
-            if (!paramFromUrl.keySet().contains(PathParamParser.KEY_OLD_SCHEME_ARG)) {
-                paramFromUrl.put(PathParamParser.KEY_OLD_SCHEME_ARG, oldArgumentInPath);
             }
         }
 
