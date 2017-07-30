@@ -13,7 +13,7 @@ import com.lusen.cardola.business.main.home.holderitem.HolderItemProductAssortDo
 import com.lusen.cardola.business.main.home.holderitem.HolderItemProductAssortTriple;
 import com.lusen.cardola.business.network.CardolaApiManager;
 import com.lusen.cardola.business.network.resp.BaseResponse;
-import com.lusen.cardola.business.network.resp.GetProductAssortResp;
+import com.lusen.cardola.business.network.resp.GetProductAssortListResp;
 import com.lusen.cardola.framework.adapter.HolderViewAdapter;
 import com.lusen.cardola.framework.network.BaseSubscriber;
 import com.lusen.cardola.framework.uibase.UiModelActionBarHelper;
@@ -74,7 +74,7 @@ public class ProductAssortFragment extends CardolaBaseFragment {
 
     private void loadData() {
         mRefreshListView.setRefreshing();
-        CardolaApiManager.getInstance().getProductAssort(new BaseSubscriber<BaseResponse<GetProductAssortResp>>() {
+        CardolaApiManager.getInstance().getProductAssortList(new BaseSubscriber<BaseResponse<GetProductAssortListResp>>() {
 
             @Override
             public void onError(Throwable e) {
@@ -89,7 +89,7 @@ public class ProductAssortFragment extends CardolaBaseFragment {
             }
 
             @Override
-            public void onNext(BaseResponse<GetProductAssortResp> response) {
+            public void onNext(BaseResponse<GetProductAssortListResp> response) {
                 super.onNext(response);
                 mRefreshListView.onRefreshComplete();
                 mDatas.clear();

@@ -43,6 +43,17 @@
         <item name="android:windowTranslucentStatus">true</item>
     </style>
 
+    <style name="CommonItemStyle">
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:background">#878777</item>
+    </style>
+
+    <declare-styleable name="CommonItemView">
+        <attr name="name" format="string"/>
+    </declare-styleable>
+
     <color name="C_black">#000000</color>
     <color name="C_grey">#98A4AE</color>
     <color name="C_orange">#fa7829</color>
@@ -82,5 +93,8 @@
     <string name="actionbar_title_checkinfo_list">考核信息</string>
     <string name="actionbar_title_product_assort">商品展示</string>
     <string name="actionbar_title_mine">我的信息</string>
+    <string name="actionbar_title_add_customer">添加商家</string>
+
+    <string name="money_commission">提成: %s</string>
 
 </resources>

@@ -2,7 +2,11 @@ package com.lusen.cardola.business.network;
 
 import com.lusen.cardola.business.network.resp.BaseResponse;
 import com.lusen.cardola.business.network.resp.GetCustomerListResp;
-import com.lusen.cardola.business.network.resp.GetProductAssortResp;
+import com.lusen.cardola.business.network.resp.GetMessageListResp;
+import com.lusen.cardola.business.network.resp.GetPerformanceListResp;
+import com.lusen.cardola.business.network.resp.GetProductAssortListResp;
+import com.lusen.cardola.business.network.resp.GetProductAssortProductListResp;
+import com.lusen.cardola.business.network.resp.GetProductDetail;
 import com.lusen.cardola.business.network.resp.HomeResp;
 import com.lusen.cardola.business.network.resp.LoginResp;
 
@@ -91,12 +95,28 @@ public class CardolaApiManager {
         execute(getService().login(account, password), subscriber);
     }
 
-    public void getCustomerList(String token, Subscriber<BaseResponse<GetCustomerListResp>> subscriber) {
-        execute(getService().getCustomerList(token), subscriber);
+    public void getCustomerList(String userId, int page, Subscriber<BaseResponse<GetCustomerListResp>> subscriber) {
+        execute(getService().getCustomerList(userId, page), subscriber);
     }
 
-    public void getProductAssort(Subscriber<BaseResponse<GetProductAssortResp>> subscriber) {
-        execute(getService().getProductAssort(), subscriber);
+    public void getProductAssortList(Subscriber<BaseResponse<GetProductAssortListResp>> subscriber) {
+        execute(getService().getProductAssortList(), subscriber);
+    }
+
+    public void getProductAssortProductList(String assortId, Subscriber<BaseResponse<GetProductAssortProductListResp>> subscriber) {
+        execute(getService().getProductAssortProductList(assortId), subscriber);
+    }
+
+    public void getProductDetail(String productId, Subscriber<BaseResponse<GetProductDetail>> subscriber) {
+        execute(getService().getProductDetail(productId), subscriber);
+    }
+
+    public void getPerformanceList(String userId, int page, Subscriber<BaseResponse<GetPerformanceListResp>> subscriber) {
+        execute(getService().getPerformanceList(userId, page), subscriber);
+    }
+
+    public void getMessageList(String userId, int page, Subscriber<BaseResponse<GetMessageListResp>> subscriber) {
+        execute(getService().getMessageList(userId, page), subscriber);
     }
 
 }

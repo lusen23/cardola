@@ -9,7 +9,7 @@ import java.util.List;
  * Created by leo on 2017/7/23.
  */
 
-public class GetProductAssortResp implements Serializable {
+public class GetProductAssortListResp implements Serializable {
 
     public List<ProductAssortPo> list;
 

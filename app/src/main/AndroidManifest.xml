@@ -76,6 +76,34 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name="com.lusen.cardola.business.main.component.AddCustomerActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="com.xiami.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data
+                    android:host="add_customer"
+                    android:scheme="cardola"/>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.lusen.cardola.business.main.component.MinePerformanceActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="com.xiami.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data
+                    android:host="mine_performance"
+                    android:scheme="cardola"/>
+            </intent-filter>
+        </activity>
+
     </application>
 
 </manifest>

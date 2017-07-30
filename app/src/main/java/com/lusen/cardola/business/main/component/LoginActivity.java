@@ -18,7 +18,6 @@ import com.lusen.cardola.framework.uibase.UiModel;
 import com.lusen.cardola.framework.uibase.stack.back.Back;
 import com.lusen.cardola.framework.uikit.LoadingDialog;
 import com.lusen.cardola.framework.util.KeyboardUtil;
-import com.lusen.cardola.framework.util.ThreadUtil;
 import com.lusen.cardola.framework.util.ToastUtil;
 import com.lusen.cardola.framework.util.UiUtil;
 
@@ -85,25 +84,14 @@ public class LoginActivity extends CardolaBaseActivity implements View.OnClickLi
             @Override
             public void onError(Throwable e) {
                 super.onError(e);
-                ThreadUtil.MAIN_THREAD_HANDLER.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        updateLoadingDialog(false);
-                        Nav.fromHost(SchemeUrlConstant.Host.HOME).nav();
-                    }
-                }, 5000);
+                updateLoadingDialog(false);
+                Nav.fromHost(SchemeUrlConstant.Host.HOME).nav();
             }
 
             @Override
             public void onNext(BaseResponse<LoginResp> response) {
-                super.onNext(response);
-                ThreadUtil.MAIN_THREAD_HANDLER.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        updateLoadingDialog(false);
-                        Nav.fromHost(SchemeUrlConstant.Host.HOME).nav();
-                    }
-                }, 5000);
+                updateLoadingDialog(false);
+                Nav.fromHost(SchemeUrlConstant.Host.HOME).nav();
             }
         });
     }

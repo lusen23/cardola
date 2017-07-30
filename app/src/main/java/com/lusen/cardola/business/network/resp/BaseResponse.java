@@ -8,12 +8,14 @@ import java.io.Serializable;
 
 public class BaseResponse<T> implements Serializable {
 
+    public static final int STATE_SUCCESS = 0;
+
     public int success;
     public String msg;
     public T data;
 
     public boolean isSuccess() {
-        return success == 0;
+        return success == STATE_SUCCESS;
     }
 
 }

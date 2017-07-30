@@ -13,6 +13,7 @@ public class ActionViewFactory {
     public static final int TITLE = 10000;
     public static final int BACK = 10001;
     public static final int SEARCH = 10002;
+    public static final int ADD = 10003;
 
     public static ActionView buildActionView(LayoutInflater inflater, int id) {
         ActionView actionView = null;
@@ -22,6 +23,9 @@ public class ActionViewFactory {
                 break;
             case SEARCH:
                 actionView = new ActionViewPlain(inflater, id, "搜索");
+                break;
+            case ADD:
+                actionView = new ActionViewPlain(inflater, id, "添加");
                 break;
         }
         return actionView;

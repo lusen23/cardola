@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <com.lusen.cardola.framework.uikit.RemoteImageView
+        android:id="@+id/item_arrow"
+        style="@style/ArrowStyle"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/global_item_padding"/>
+
+    <com.lusen.cardola.framework.uikit.RemoteTextView
+        android:id="@+id/item_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/global_item_padding"
+        android:layout_marginRight="10dp"
+        android:layout_toLeftOf="@id/item_arrow"
+        android:singleLine="true"
+        android:textColor="@color/C_black"
+        android:textSize="@dimen/F_16"/>
+
+    <View
+        style="@style/DividerStyle"
+        android:layout_alignParentBottom="true"/>
+
+    <View
+        style="@style/DividerStyle"
+        android:layout_alignParentTop="true"/>
+
+</RelativeLayout>

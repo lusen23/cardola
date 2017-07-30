@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="我的信息"
-        android:textSize="30dp"/>
+    <com.lusen.cardola.framework.uikit.CommonItemView
+        android:id="@+id/item_mine_account"
+        style="@style/CommonItemStyle"
+        app:name="我的账户"/>
+
+    <com.lusen.cardola.framework.uikit.CommonItemView
+        android:id="@+id/item_mine_performance"
+        style="@style/CommonItemStyle"
+        app:name="我的绩效"/>
+
+    <com.lusen.cardola.framework.uikit.CommonItemView
+        android:id="@+id/item_mine_message"
+        style="@style/CommonItemStyle"
+        app:name="我的消息"/>
 
 </LinearLayout>

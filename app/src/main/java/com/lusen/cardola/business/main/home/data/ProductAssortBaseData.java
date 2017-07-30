@@ -1,6 +1,6 @@
 package com.lusen.cardola.business.main.home.data;
 
-import com.lusen.cardola.business.network.resp.GetProductAssortResp;
+import com.lusen.cardola.business.network.resp.GetProductAssortListResp;
 import com.lusen.cardola.framework.adapter.IAdapterData;
 
 import java.util.ArrayList;
@@ -14,7 +14,7 @@ public class ProductAssortBaseData implements IAdapterData {
 
     public List<ProductAssortData> mDatas = new ArrayList<>();
 
-    public static List<ProductAssortBaseData> convert(GetProductAssortResp resp) {
+    public static List<ProductAssortBaseData> convert(GetProductAssortListResp resp) {
 
         List<ProductAssortBaseData> datas = new ArrayList<>();
 

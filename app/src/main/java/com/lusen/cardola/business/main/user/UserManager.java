@@ -41,4 +41,8 @@ public class UserManager {
 
     }
 
+    public String getUserId() {
+        return null;
+    }
+
 }
