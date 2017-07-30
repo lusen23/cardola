@@ -13,8 +13,8 @@ import com.lusen.cardola.framework.adapter.HolderViewAdapter;
 import com.lusen.cardola.framework.adapter.HolderViewItem;
 import com.lusen.cardola.framework.adapter.IAdapterData;
 import com.lusen.cardola.framework.network.BaseSubscriber;
-import com.lusen.cardola.framework.uikit.EmptyView;
 import com.lusen.cardola.framework.uikit.RefreshListView;
+import com.lusen.cardola.framework.uikit.StateView;
 import com.lusen.cardola.framework.uikit.pulltorefresh.PullToRefreshBase;
 import com.lusen.cardola.framework.util.UiUtil;
 
@@ -29,6 +29,8 @@ import java.util.List;
 public abstract class CardolaBaseListPageActivity<D extends IAdapterData, T extends Serializable> extends CardolaBaseActivity {
 
     private RefreshListView mRefreshListView;
+    private StateView mStateView;
+
     private HolderViewAdapter mHolderViewAdapter;
     private List<D> mDatas = new ArrayList<>();
     private int mCurPage;
@@ -42,15 +44,16 @@ public abstract class CardolaBaseListPageActivity<D extends IAdapterData, T exte
     protected void onContentViewCreated(View view) {
         super.onContentViewCreated(view);
         mRefreshListView = UiUtil.findViewById(this, R.id.listview, RefreshListView.class);
+        mStateView = UiUtil.findViewById(this, R.id.stateview, StateView.class);
         mHolderViewAdapter = new HolderViewAdapter(this, mDatas, getHolderViews());
-        EmptyView emptyView = new EmptyView(this);
-        emptyView.setOnClickListener(new View.OnClickListener() {
+        mStateView.setStateCallback(new StateView.StateCallback() {
             @Override
-            public void onClick(View v) {
-                loadData(true);
+            public void onStateClick(@StateView.State int state) {
+                if (state == StateView.State.EMPTY) {
+                    loadData(true);
+                }
             }
         });
-        mRefreshListView.setEmptyView(emptyView);
         mRefreshListView.setAdapter(mHolderViewAdapter);
         mRefreshListView.setMode(PullToRefreshBase.Mode.BOTH);
         mRefreshListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
@@ -70,6 +73,7 @@ public abstract class CardolaBaseListPageActivity<D extends IAdapterData, T exte
                 onListItemClick(position, mDatas.get(position));
             }
         });
+        mStateView.changeState(StateView.State.LOADING);
         loadData(true);
     }
 
@@ -101,10 +105,18 @@ public abstract class CardolaBaseListPageActivity<D extends IAdapterData, T exte
         @Override
         public void onError(Throwable e) {
             super.onError(e);
-//            mRefreshListView.onRefreshComplete();
-            BaseResponse response = new BaseResponse<T>();
-            response.success = 0;
-            onNext(response);
+            mRefreshListView.onRefreshComplete();
+            mStateView.changeState(StateView.State.INIT);
+
+//            ThreadUtil.MAIN_THREAD_HANDLER.postDelayed(new Runnable() {
+//                @Override
+//                public void run() {
+//                BaseResponse<T> response = new BaseResponse<>();
+//                response.success = 0;
+//                onNext(response);
+//                }
+//            },5000);
+
         }
 
         @Override
@@ -121,6 +133,9 @@ public abstract class CardolaBaseListPageActivity<D extends IAdapterData, T exte
                 }
                 mDatas.addAll(datas);
             }
+            // 判断空视图
+            mStateView.changeState(mDatas.isEmpty() ? StateView.State.EMPTY : StateView.State.INIT);
+            // 刷新视图
             mHolderViewAdapter.notifyDataSetChanged();
         }
 
