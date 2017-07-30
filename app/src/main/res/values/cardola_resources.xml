@@ -33,6 +33,16 @@
         <item name="android:background">@drawable/icon_arrow_right</item>
     </style>
 
+    <style name="LoadingDialogStyle" parent="@android:style/Theme">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
+
     <color name="C_black">#000000</color>
     <color name="C_grey">#98A4AE</color>
     <color name="C_orange">#fa7829</color>

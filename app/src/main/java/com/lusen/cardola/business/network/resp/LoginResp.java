@@ -7,4 +7,8 @@ import java.io.Serializable;
  */
 
 public class LoginResp implements Serializable {
+
+    public String userId;
+    public String username;
+
 }

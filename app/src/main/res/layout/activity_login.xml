@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:app="http://schemas.android.com/apk/res-auto"
              android:layout_width="match_parent"
              android:layout_height="match_parent">
 
@@ -86,32 +85,5 @@
             android:textSize="@dimen/F_18"/>
 
     </LinearLayout>
-
-    <FrameLayout
-        android:id="@+id/layout_loading"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#c1000000"
-        android:clickable="true"
-        android:visibility="invisible">
-
-        <com.facebook.shimmer.ShimmerFrameLayout
-            android:id="@+id/shimmer_view_container"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal|bottom"
-            android:layout_marginBottom="60dp"
-            app:auto_start="true">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="正在登录中 >>> "
-                android:textColor="@color/C_white"
-                android:textSize="@dimen/F_26"/>
-
-        </com.facebook.shimmer.ShimmerFrameLayout>
-
-    </FrameLayout>
 
 </FrameLayout>

@@ -24,7 +24,7 @@ public interface ICardolaApiService {
             @Query("userFrom") int userFrom);
 
     @GET("admin/appLogin")
-    Observable<BaseResponse<LoginResp>> login(@Query("account") String account, @Query("password") String password);
+    Observable<BaseResponse<LoginResp>> login(@Query("username") String username, @Query("password") String password);
 
     @GET("admin/appLogin")
     Observable<BaseResponse<LoginResp>> resetPassword(@Query("token") String token, @Query("password") String password);
