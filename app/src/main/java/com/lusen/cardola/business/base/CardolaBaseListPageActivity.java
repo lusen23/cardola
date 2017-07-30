@@ -16,6 +16,7 @@ import com.lusen.cardola.framework.network.BaseSubscriber;
 import com.lusen.cardola.framework.uikit.RefreshListView;
 import com.lusen.cardola.framework.uikit.StateView;
 import com.lusen.cardola.framework.uikit.pulltorefresh.PullToRefreshBase;
+import com.lusen.cardola.framework.util.ThreadUtil;
 import com.lusen.cardola.framework.util.UiUtil;
 
 import java.io.Serializable;
@@ -105,17 +106,18 @@ public abstract class CardolaBaseListPageActivity<D extends IAdapterData, T exte
         @Override
         public void onError(Throwable e) {
             super.onError(e);
-            mRefreshListView.onRefreshComplete();
-            mStateView.changeState(StateView.State.INIT);
+//            mRefreshListView.onRefreshComplete();
+//            mStateView.changeState(StateView.State.INIT);
 
-//            ThreadUtil.MAIN_THREAD_HANDLER.postDelayed(new Runnable() {
-//                @Override
-//                public void run() {
-//                BaseResponse<T> response = new BaseResponse<>();
-//                response.success = 0;
-//                onNext(response);
-//                }
-//            },5000);
+            // TODO 仅做测试
+            ThreadUtil.MAIN_THREAD_HANDLER.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    BaseResponse<T> response = new BaseResponse<>();
+                    response.success = 0;
+                    onNext(response);
+                }
+            }, 5000);
 
         }
 

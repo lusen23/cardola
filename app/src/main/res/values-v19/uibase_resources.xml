@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <dimen name="uibase_action_bar_height">75dp</dimen>
+    <dimen name="uibase_action_bar_height">65dp</dimen>
     <dimen name="uibase_action_bar_padding_top">25dp</dimen>
 
 </resources>

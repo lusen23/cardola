@@ -19,10 +19,14 @@ import com.lusen.cardola.framework.util.UiUtil;
 
 public class CommonItemView extends FrameLayout {
 
-    private RemoteTextView mItemNameView;
-    private RemoteImageView mItemArrowView;
+    public RemoteTextView mItemNameView;
+    public RemoteTextView mItemSubNameView;
+    public RemoteImageView mItemArrowView;
+    public View mItemLineTop;
+    public View mItemLineBottom;
 
     private CharSequence attrName;
+    private CharSequence attrSubName;
 
     public CommonItemView(@NonNull Context context) {
         super(context);
@@ -48,6 +52,8 @@ public class CommonItemView extends FrameLayout {
                     int attr = a.getIndex(i);
                     if (attr == R.styleable.CommonItemView_name) {
                         attrName = a.getText(attr);
+                    } else if (attr == R.styleable.CommonItemView_subname) {
+                        attrSubName = a.getText(attr);
                     }
                 }
                 a.recycle();
@@ -56,17 +62,34 @@ public class CommonItemView extends FrameLayout {
         // 构造视图
         View view = inflate(context, R.layout.common_item_view, null);
         mItemNameView = UiUtil.findViewById(view, R.id.item_name, RemoteTextView.class);
+        mItemSubNameView = UiUtil.findViewById(view, R.id.item_subname, RemoteTextView.class);
         mItemArrowView = UiUtil.findViewById(view, R.id.item_arrow, RemoteImageView.class);
+        mItemLineTop = UiUtil.findViewById(view, R.id.item_line_top, View.class);
+        mItemLineBottom = UiUtil.findViewById(view, R.id.item_line_bottom, View.class);
         addView(view, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-
+        // 设置相关属性
         if (null != attrName) {
             setName(attrName + "");
         }
-
+        if (null != attrSubName) {
+            setSubName(attrSubName + "");
+        }
     }
 
     public void setName(String name) {
         mItemNameView.setText(name);
+    }
+
+    public void setSubName(String name) {
+        mItemSubNameView.setText(name);
+    }
+
+    public void setItemLineTopVisibility(int visibility) {
+        mItemLineTop.setVisibility(visibility);
+    }
+
+    public void setItemLineBottomVisibility(int visibility) {
+        mItemLineBottom.setVisibility(visibility);
     }
 
 }

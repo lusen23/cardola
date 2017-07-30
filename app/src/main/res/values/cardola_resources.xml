@@ -44,14 +44,15 @@
     </style>
 
     <style name="CommonItemStyle">
-        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginTop">6dp</item>
         <item name="android:layout_height">60dp</item>
         <item name="android:layout_width">match_parent</item>
-        <item name="android:background">#878777</item>
+        <item name="android:background">@drawable/xm_choice_simple_list_selector</item>
     </style>
 
     <declare-styleable name="CommonItemView">
         <attr name="name" format="string"/>
+        <attr name="subname" format="string"/>
     </declare-styleable>
 
     <color name="C_black">#000000</color>
@@ -92,8 +93,11 @@
     <string name="actionbar_title_customer_list">我的商户</string>
     <string name="actionbar_title_checkinfo_list">考核信息</string>
     <string name="actionbar_title_product_assort">商品展示</string>
-    <string name="actionbar_title_mine">我的信息</string>
+    <string name="actionbar_title_mine">我的</string>
     <string name="actionbar_title_add_customer">添加商家</string>
+    <string name="actionbar_title_mine_account">我的账户</string>
+    <string name="actionbar_title_mine_performance">我的绩效</string>
+    <string name="actionbar_title_mine_message">我的消息</string>
 
     <string name="money_commission">提成: %s</string>
 
