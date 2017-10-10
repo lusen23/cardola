@@ -8,7 +8,7 @@ import com.lusen.cardola.R;
 import com.lusen.cardola.business.main.home.data.CustomerData;
 import com.lusen.cardola.framework.adapter.HolderViewItem;
 import com.lusen.cardola.framework.adapter.IAdapterData;
-import com.lusen.cardola.framework.uikit.RemoteTextView;
+import com.lusen.cardola.framework.uikit.CommonItemView;
 import com.lusen.cardola.framework.util.UiUtil;
 
 /**
@@ -17,7 +17,7 @@ import com.lusen.cardola.framework.util.UiUtil;
 
 public class HolderItemCustomer extends HolderViewItem {
 
-    private RemoteTextView mName;
+    private CommonItemView mItemView;
 
     public HolderItemCustomer(@NonNull Context context) {
         super(context);
@@ -25,13 +25,13 @@ public class HolderItemCustomer extends HolderViewItem {
 
     @Override
     public void bindView(View rootView) {
-        mName = UiUtil.findViewById(rootView, R.id.name, RemoteTextView.class);
+        mItemView = UiUtil.findViewById(rootView, R.id.item_view, CommonItemView.class);
     }
 
     @Override
     public void bindData(IAdapterData data, int position) {
         if (data instanceof CustomerData) {
-            mName.setText(((CustomerData) data).mName);
+            mItemView.mItemNameView.setText(((CustomerData) data).mName);
         }
     }
 
