@@ -1,7 +1,6 @@
 package com.lusen.cardola.business.main.home.data;
 
 import com.lusen.cardola.business.main.home.holderitem.HolderItemCustomer;
-import com.lusen.cardola.business.network.model.CustomerPo;
 import com.lusen.cardola.business.network.resp.GetCustomerListResp;
 import com.lusen.cardola.framework.adapter.IAdapterDataViewModel;
 
@@ -22,14 +21,14 @@ public class CustomerData implements IAdapterDataViewModel {
         return HolderItemCustomer.class;
     }
 
-    public static List<CustomerData> convert(GetCustomerListResp resp) {
+    public static List<CustomerData> convert(List<GetCustomerListResp> resp) {
         List<CustomerData> datas = new ArrayList<>();
         if (null != resp) {
-            for (CustomerPo customerPo : resp.list) {
-                if (null != customerPo) {
+            for (GetCustomerListResp po : resp) {
+                if (null != po) {
                     CustomerData data = new CustomerData();
-                    data.mId = customerPo.id;
-                    data.mName = customerPo.name;
+                    data.mId = po.id;
+                    data.mName = po.name;
                     datas.add(data);
                 }
             }

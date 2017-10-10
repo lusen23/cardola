@@ -27,7 +27,7 @@ import java.util.List;
  * Created by leo on 2017/7/30.
  */
 
-public abstract class CardolaBaseListPageFragment<D extends IAdapterData, T extends Serializable> extends CardolaBaseFragment {
+public abstract class CardolaBaseListPageFragment<D extends IAdapterData, T> extends CardolaBaseFragment {
 
     private RefreshListView mRefreshListView;
     private StateView mStateView;
@@ -106,18 +106,18 @@ public abstract class CardolaBaseListPageFragment<D extends IAdapterData, T exte
         @Override
         public void onError(Throwable e) {
             super.onError(e);
-//            mRefreshListView.onRefreshComplete();
-//            mStateView.changeState(StateView.State.INIT);
+            mRefreshListView.onRefreshComplete();
+            mStateView.changeState(StateView.State.INIT);
 
-            // TODO 仅做测试
-            ThreadUtil.MAIN_THREAD_HANDLER.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    BaseResponse<T> response = new BaseResponse<>();
-                    response.success = 0;
-                    onNext(response);
-                }
-            }, 5000);
+//            // TODO 仅做测试
+//            ThreadUtil.MAIN_THREAD_HANDLER.postDelayed(new Runnable() {
+//                @Override
+//                public void run() {
+//                    BaseResponse<T> response = new BaseResponse<>();
+//                    response.success = 0;
+//                    onNext(response);
+//                }
+//            }, 5000);
 
         }
 

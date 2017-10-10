@@ -11,6 +11,7 @@ import com.lusen.cardola.business.network.resp.HomeResp;
 import com.lusen.cardola.business.network.resp.LoginResp;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Interceptor;
@@ -95,7 +96,7 @@ public class CardolaApiManager {
         execute(getService().login(account, password), subscriber);
     }
 
-    public void getCustomerList(String userId, int page, Subscriber<BaseResponse<GetCustomerListResp>> subscriber) {
+    public void getCustomerList(String userId, int page, Subscriber<BaseResponse<List<GetCustomerListResp>>> subscriber) {
         execute(getService().getCustomerList(userId, page), subscriber);
     }
 

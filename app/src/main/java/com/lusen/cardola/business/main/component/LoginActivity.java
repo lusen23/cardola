@@ -85,7 +85,7 @@ public class LoginActivity extends CardolaBaseActivity implements View.OnClickLi
             public void onError(Throwable e) {
                 super.onError(e);
                 updateLoadingDialog(false);
-                Nav.fromHost(SchemeUrlConstant.Host.HOME).nav();
+                ToastUtil.toast("登录异常");
             }
 
             @Override

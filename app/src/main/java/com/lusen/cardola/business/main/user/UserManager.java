@@ -42,7 +42,8 @@ public class UserManager {
     }
 
     public String getUserId() {
-        return null;
+        // TODO 暂时写死32，待完善login模块
+        return "32";
     }
 
 }

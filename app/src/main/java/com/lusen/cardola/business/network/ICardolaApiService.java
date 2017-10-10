@@ -10,6 +10,8 @@ import com.lusen.cardola.business.network.resp.GetProductDetail;
 import com.lusen.cardola.business.network.resp.HomeResp;
 import com.lusen.cardola.business.network.resp.LoginResp;
 
+import java.util.List;
+
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 import rx.Observable;
@@ -39,8 +41,8 @@ public interface ICardolaApiService {
     Observable<BaseResponse<LoginResp>> sendVerifyCode(@Query("token") String token, @Query("phone") String phone);
 
     // 获取商户列表
-    @GET("admin/appLogin")
-    Observable<BaseResponse<GetCustomerListResp>> getCustomerList(@Query("userId") String userId, @Query("pageNum") int page);
+    @GET("admin/app/seller/getMerchantList")
+    Observable<BaseResponse<List<GetCustomerListResp>>> getCustomerList(@Query("userId") String userId, @Query("pageNum") int page);
 
     // 获取商品专区列表
     @GET("admin/appLogin")

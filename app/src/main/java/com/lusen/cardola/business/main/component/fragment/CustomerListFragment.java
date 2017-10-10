@@ -25,7 +25,7 @@ import navigator.Nav;
  * Created by leo on 2017/7/23.
  */
 
-public class CustomerListFragment extends CardolaBaseListPageFragment<CustomerData, GetCustomerListResp> {
+public class CustomerListFragment extends CardolaBaseListPageFragment<CustomerData, List<GetCustomerListResp>> {
 
     @Override
     public String initActionBarTitle() {
@@ -71,7 +71,7 @@ public class CustomerListFragment extends CardolaBaseListPageFragment<CustomerDa
     }
 
     @Override
-    public List<CustomerData> convertData(GetCustomerListResp resp) {
+    public List<CustomerData> convertData(List<GetCustomerListResp> resp) {
         return CustomerData.convert(resp);
     }
 
